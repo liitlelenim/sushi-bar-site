@@ -1,0 +1,164 @@
+@use './colors.scss' as col;
+@use './fonts.scss' as fonts;
+@use './normalize';
+
+@mixin movingGradient {
+  background: rgb(238, 126, 141);
+  background: linear-gradient(
+    39deg,
+    rgba(238, 126, 217, 1) 0%,
+    rgba(195, 62, 62, 1) 36%,
+    rgba(229, 80, 80, 1) 69%,
+    rgba(220, 36, 117, 1) 100%
+  );
+  animation: gradient-movement 15s;
+  animation-iteration-count: infinite;
+  background-size: 400%;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  font-family: fonts.$defaultFont;
+  background-image: url("./Images/japanese_night_background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+}
+h1 {
+  font-size: 1.5em;
+}
+header {
+  width: 100%;
+  font-family: fonts.$handwritingFont;
+  height: 15vh;
+  line-height: 15vh;
+  text-align: center;
+  font-size: 3em;
+  @include movingGradient();
+  text-shadow: 0 3px 5px black;
+  box-shadow: 0 5px 25px black;
+  margin-bottom: 25px;
+}
+@keyframes gradient-movement {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.sushi-presentation-container {
+  display: flex;
+  min-height: 85vh;
+  align-self: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+
+  width: 100%;
+  figure:hover {
+    img {
+      bottom: 15px;
+    }
+    figcaption {
+      opacity: 1;
+    }
+  }
+  figcaption {
+    opacity: 0;
+    margin-top: 5px;
+    text-align: center;
+    transition: opacity 1s;
+    text-shadow: 1px 2px black;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .sushi-presentation-container {
+    flex-direction: column;
+  }
+}
+
+.sushi-circle-presentation {
+  display: inline-block;
+  margin: auto;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transition: border-color 0.5s;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px col.$rose solid;
+  box-shadow: 0 5px 10px black;
+  bottom: 0px;
+  transition: bottom 1s;
+  &:hover {
+    border-color: col.$pink;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .sushi-circle-presentation {
+    width: 300px;
+    height: 300px;
+  }
+}
+.text-section {
+  padding: 10vh;
+  width: 100%;
+  min-height: 90vh;
+  -webkit-clip-path: polygon(100% 13%, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 13%, 100% 100%, 0 100%, 0 0);
+  background: col.$oxford-blue;
+  background: rgb(0, 37, 65);
+  background: radial-gradient(
+    circle,
+    rgb(1, 16, 49) 0%,
+    rgba(1, 0, 38, 1) 100%
+  );
+  padding-top: 50px;
+  text-align: center;
+
+  article {
+    h1 {
+      font-family: fonts.$handwritingFont;
+      font-size: 2em;
+      text-shadow: 1px 1px 3px rgba(229, 80, 80, 1);
+      font-weight: bold;
+      transition: text-shadow 1s;
+      &:hover {
+        text-shadow: 1px 1px 8px rgba(220, 36, 117, 1);
+      }
+    }
+    .contact-options {
+      display: flex;
+      justify-content: center;
+    }
+    .contact-option {
+      margin-top: 30vh;
+      width: 50%;
+    }
+    .icon {
+      filter: invert(100%);
+      -webkit-filter: invert(100%);
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+footer {
+  margin: 0;
+  text-align: center;
+  @include movingGradient;
+  height: 5vh;
+  line-height: 5vh;
+  width: 100%;
+}

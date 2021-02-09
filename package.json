@@ -1,0 +1,16 @@
+{
+  "name": "sushibar-website",
+  "version": "1.0.0",
+  "description": "Simple non-functional website of sushi restaurant.",
+  "main": "index.js",
+  "scripts": {
+    "test": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "author": "Jakub Błaszczyk",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.30.0"
+  }
+}
